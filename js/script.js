@@ -1,5 +1,78 @@
 $(document).ready(function () {
 
+
+    var totalInstallments = 5000;
+    var currentInstallments = 3648;
+    var remainingInstallments = totalInstallments - currentInstallments;
+    var currentPercentage = ((currentInstallments / totalInstallments) * 100).toFixed(0);
+
+    Chart.pluginService.register({
+        beforeDraw: function (chart) {
+            if (chart.config.type === 'doughnut') {
+                var width = chart.chart.width,
+                    height = chart.chart.height,
+                    ctx = chart.chart.ctx;
+
+                ctx.restore();
+                var fontSize = (height / 100).toFixed(2);
+                ctx.font = fontSize + "em sans-serif";
+                ctx.fillStyle = 'white';
+                ctx.textBaseline = "middle";
+
+                var percentage = currentPercentage,
+                    text = percentage + "%",
+                    textX = Math.round((width - ctx.measureText(text).width) / 2),
+                    textY = height / 2.4;
+
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+            }
+
+        }
+    });
+
+    var chart2Config = {
+        type: 'doughnut',
+        data: {
+            labels: ['Current Installments', 'Remaining Installments'],
+            datasets: [{
+                data: [currentInstallments, remainingInstallments],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(174, 174, 174, 0.3)'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            cutoutPercentage: 60,
+            rotation: Math.PI / 2,
+            counterclockwise: false,
+            animation: {
+                animateRotate: false,
+                animateScale: true
+            },
+            tooltips: {
+                enabled: true
+            },
+            legend: {
+                display: true,
+                position: 'bottom'
+            },
+            elements: {
+                center: {
+                    text: currentInstallments.toLocaleString(),
+                    color: 'rgba(255, 255, 255, 1)', // Set color forthe text inside the circle
+                    fontStyle: 'Arial', // Set font style for the text
+                    sidePadding: 20 // Adjust text position inside the circle
+                }
+            },
+            aspectRatio: 1
+        }
+    };
+
+    var myChart2 = new Chart(document.getElementById('myChart2'), chart2Config);
+
     // Get a reference to the chart canvas element
     var chartCanvas = document.getElementById('myChart');
 
@@ -13,18 +86,37 @@ $(document).ready(function () {
             datasets: [{
                 label: 'Weekly Data',
                 data: chartData,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
+                backgroundColor: 'rgba(226, 62, 69, 0.4)',
+                borderColor: 'rgba(226, 62, 69, 1)',
+                borderWidth: 3,
+                lineTension: 0,
             }]
         },
         options: {
+            bezierCurve: false,
             scales: {
                 yAxes: [{
+                    gridLines: {
+                        color: 'rgba(255,255,255,0.3)',
+                    },
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        color: 'rgba(255,255,255,1)' // Set the font color for y-axis labels
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        color: 'rgba(255,255,255,0.05)' // Set the font color for y-axis labels
+                    },
+                    ticks: {
+                        color: 'rgba(255,255,255,1)' // Set the font color for x-axis labels
                     }
                 }]
+            },
+            legend: {
+                labels: {
+                    color: 'rgba(255,255, 255, 1)' // Set the font color for legend labels
+                }
             }
         }
     };
@@ -71,7 +163,6 @@ $(document).ready(function () {
         }
     });
 
-    // Listen for changes to the time range, and update the date picker container accordingly
     $('#timeRangeSelect').on('change', function () {
         var selectedValue = $(this).val();
 
@@ -149,6 +240,7 @@ $(document).ready(function () {
 
         }
         myChart.update();
+        myChart2.update();
     }
 
 });

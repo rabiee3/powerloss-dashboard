@@ -6,62 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Power loss reduction - SAM4 installments dashboard</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap4.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <!-- Select2 CSS -->
-    <link rel="stylesheet" href="select2.css">
+    <link rel="stylesheet" href="./css/select2.css">
     <!-- Your CSS file -->
-    <link rel="stylesheet" href="styles.css">
-    <script src="./jquery.js"></script>
-    <script src="./jqueryui.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jqueryui.js"></script>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="text-center">
-            <h1>Power-loss reduction dashboard</h1>
-            <h4>SAM4 installments</h4>
+    <div class="bg-dark1 text-white w-100 p-2 rounded">
+        <div class="float-start">
+            <img src="./img/logo_circle.png" class="w-100 logo me-2" />
         </div>
-        <div class="row">
-            <div class="col-md-3 filter-section">
-                <form>
-                    <div class="form-group">
-                        <label for="time-period">Time Period:</label>
-                        <select id="timeRangeSelect" class="select2">
-                            <option value="weekly">Weekly</option>
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly">Yearly</option>
-                        </select>
-                        <div id="datePickerContainer">
-                            <div id="weekPicker">
-                                <input type="text" id="weekPickerInput">
-                            </div>
-                            <div id="monthPicker" style="display:none;">
-                                <input type="text" id="monthPickerInput">
-                            </div>
-                            <div id="yearPicker" style="display:none;">
-                                <input type="text" id="yearPickerInput">
+        <h3 class="mb-0">Power-loss reduction dashboard</h1>
+        <h6 class="mb-0 text-light1">SAM4 installments</h4>
+    </div>
+    <div class="container-fluid mt-3">
+        <div class="row g-3">
+            <div class="col-md-3 d-flex flex-column">
+                <div class="bg-dark1 pt-2 px-3 pb-4 rounded">
+                    <form>
+                        <div class="form-group text-light1">
+                            <label class="mb-2" for="time-period">Time Period:</label><br/>
+                            <select id="timeRangeSelect" class="select2 w-100 mb-2">
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                            <div id="datePickerContainer" class="mt-3">
+                                <div id="weekPicker">
+                                    <input class="border-0 rounded-2 w-100 px-2 bg-dark4" type="text" id="weekPickerInput" placeholder="Select Weekday">
+                                </div>
+                                <div id="monthPicker" style="display:none;">
+                                    <input class="border-0 rounded-2 w-100 px-2 bg-dark4" type="text" id="monthPickerInput" placeholder="Select Monthday">
+                                </div>
+                                <div id="yearPicker" style="display:none;">
+                                    <input class="border-0 rounded-2 w-100 px-2 bg-dark4" type="text" id="yearPickerInput" placeholder="Select a day in the Year">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
+                <div class="bg-dark1 pt-2 px-3 pb-3 rounded mt-auto">
+                    <label class="mb-2 text-light1 w-100" for="time-period">Installments Progress</label><br/>
+                    <div><canvas id="myChart2"></canvas></div>
+                </div>
             </div>
-            <div class="col-md-9 chart-section">
-                <canvas id="myChart"></canvas>
+            <div class="col-md-9">
+                <div class="bg-dark1 p-2 rounded">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
 
-
-    <link rel="stylesheet" href="./jqueryui.css">
-
-
+    <link rel="stylesheet" href="./css/jqueryui.css">
 
     <!-- Select2 JS -->
-    <script src="./select2.min.js"></script>
+    <script src="./js/select2.min.js"></script>
     <!-- Chart.js -->
-    <script src="./chartjs.js"></script>
+    <script src="./js/chartjs.js"></script>
     <!-- Your JS file -->
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

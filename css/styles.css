@@ -1,0 +1,61 @@
+:root {
+    --dark1: #282f3c;
+    --dark2: #1e2631;
+    --dark3: #a6a7aa;
+    --dark4: #b7b7b8;
+
+    --red1: #e60000;
+}
+
+body {
+    background-color: var(--dark2);
+    margin: 0;
+}
+
+.logo {
+    max-width: 56px;
+}
+
+.text-light1 {
+    color: var(--dark3);
+}
+
+.text-dark1 {
+    color: var(--dark1);
+}
+
+.text-red1 {
+    color: var(--red1);
+}
+
+.bg-dark1 {
+    background-color: var(--dark1);
+}
+
+.bg-dark2 {
+    background-color: var(--dark2);
+}
+
+.bg-dark4 {
+    background-color: var(--dark4);
+}
+
+.chart-section canvas {
+    height: 400px;
+    width: 100% !important;
+    /* max-height: 400px; */
+}
+
+.select2-container {
+    max-width: 100%;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: var(--dark4);
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+}

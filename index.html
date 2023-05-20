@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power loss reduction - SAM4 installments dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap4.css">
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="select2.css">
+    <!-- Your CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="./jquery.js"></script>
+    <script src="./jqueryui.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>Power-loss reduction dashboard</h1>
+            <h4>SAM4 installments</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-3 filter-section">
+                <form>
+                    <div class="form-group">
+                        <label for="time-period">Time Period:</label>
+                        <select id="timeRangeSelect" class="select2">
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                        <div id="datePickerContainer">
+                            <div id="weekPicker">
+                                <input type="text" id="weekPickerInput">
+                            </div>
+                            <div id="monthPicker" style="display:none;">
+                                <input type="text" id="monthPickerInput">
+                            </div>
+                            <div id="yearPicker" style="display:none;">
+                                <input type="text" id="yearPickerInput">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-9 chart-section">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <link rel="stylesheet" href="./jqueryui.css">
+
+
+
+    <!-- Select2 JS -->
+    <script src="./select2.min.js"></script>
+    <!-- Chart.js -->
+    <script src="./chartjs.js"></script>
+    <!-- Your JS file -->
+    <script src="script.js"></script>
+</body>
+
+</html>
